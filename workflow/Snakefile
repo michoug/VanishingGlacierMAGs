@@ -1,0 +1,123 @@
+# Pipeline for analysing the NOMIS MAGs
+# Example call: snakemake -s workflow/Snakefile --configfile config/config.yaml --use-conda --conda-prefix ${CONDA_PREFIX}/pipeline --cores 1 -rpn
+
+##############################
+# MODULES
+import os, re
+import glob
+import shutil
+import pandas as pd
+
+##############################
+# CONFIG
+# can be overwritten by using --configfile <path to config> when calling snakemake
+# configfile:"config/config.yaml"
+
+include:
+    "rules/init.smk"
+
+##############################
+# TARGETS & RULES
+# List of (main) targets to be created
+TARGETS = []
+
+# Coverage
+if "coverage_subset" in STEPS:
+    include:
+        "rules/coverage_subset.smk"
+    TARGETS += [
+        "status/coverage_subset.done"
+    ]
+
+if "mags_generation" in STEPS:
+    include:
+        "rules/mags_generation.smk"
+    TARGETS += [
+        "status/mags_generation.done"
+    ]
+
+if "dastool" in STEPS:
+    include:
+        "rules/dastool.smk"
+    TARGETS += [
+        "status/dastool.done"
+    ]
+
+# CheckM
+if "checkm" in STEPS:
+    include:
+        "rules/checkm2.smk"
+    TARGETS += [
+        "status/checkm2.done"
+    ]
+
+if "filter_checkm" in STEPS:
+    include:
+        "rules/filter_checkm2.smk"
+    TARGETS += [
+        "status/filter_checkm2.done"
+    ]
+
+# Dereplication
+if "dereplicate" in STEPS:
+    include:
+        "rules/dereplicate.smk"
+    TARGETS += [
+        "status/dereplicate.done"
+    ]
+
+# MDMCleaner
+if "mdmcleaner" in STEPS:
+    include:
+        "rules/mdmcleaner.smk"
+    TARGETS += [
+       "status/mdmcleaner.done"
+    ]
+
+# Coverage
+if "coverage" in STEPS:
+    include:
+        "rules/coverage.smk"
+    TARGETS += [
+        "status/coverage.done"
+    ]
+
+# GTDBtk 
+if "gtdbtk" in STEPS:
+    include:
+        "rules/gtdbtk.smk"
+    TARGETS += [
+        "status/gtdbtk.done"
+    ]
+
+# METABOLIC
+if "metabolic" in STEPS:
+    include:
+        "rules/metabolic.smk"
+    TARGETS += [
+         "status/metabolic.done"
+    ]
+
+# EggNog-Mapper
+if "eggnog" in STEPS:
+    include:
+        "rules/eggnog.smk"
+    TARGETS += [
+         "status/eggnog.done"
+    ]
+
+# MG Thermometer
+if "mgthermometer" in STEPS:
+    include:
+        "rules/mgthermometer.smk"
+    TARGETS += [
+        "status/mgthermometer.done"
+    ]
+
+# No targets
+if len(TARGETS) == 0:
+    raise Exception('You are not serious. Nothing to be done? Really?')
+
+rule NOMIS_MAGS:
+    input:
+        TARGETS

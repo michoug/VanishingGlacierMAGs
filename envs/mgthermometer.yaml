@@ -1,0 +1,10 @@
+name: bioperl
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - perl-bioperl=1.7.8
+  - perl-file-slurp
+  - perl-list-moreutils
+  - prodigal=2.6.3

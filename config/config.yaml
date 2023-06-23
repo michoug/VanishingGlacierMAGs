@@ -1,0 +1,104 @@
+############################################################
+# STEPS
+
+# Steps to be done
+# ORDER of STEPS: ["checkm", "dereplicate", "drep_checkm", "coverage", "gtdbtk", "eggnog", "metabolic", "mgthermometer"]
+#
+# steps: ["checkm", "dereplicate", "gtdbtk", "eggnog", "coverage", "metabolic", "mgthermometer"]  # "mdmcleaner" will be run prior to these steps
+steps: ["coverage_subset","mags_generation","dastool","checkm","filter_checkm","mdmcleaner","dereplicate","coverage","gtdbtk","eggnog","metabolic","mgthermometer"]    # for testing purposes
+
+############################################################
+# INPUT         ###USER INPUT REQUIRED###
+# Directory where the workflow exists
+work_dir: "/scratch/users/gmichoud/Test/SnakemakeBinning"
+
+# Directory where assembly files are
+assembly_dir: "/scratch/users/mbourquin/NOMIS_assemblies/"
+
+# Directory to save the output to
+results_dir: "/scratch/users/gmichoud/Test/mags"  # "/scratch/users/gmichoud/nomis_mags/"
+
+# Directory for all the conda environments
+env_dir: "/scratch/users/gmichoud/Test/SnakemakeBinning/envs"
+
+# Directory for databases
+db_dir: "/scratch/users/gmichoud/DB"
+
+# Directory for trimmed reads
+reads_dir: "/scratch/users/mbourquin/NOMIS_reads"
+
+# Number of cpus or threads to use
+threads: 28
+
+
+##############################
+# Parameters #
+filter_length:
+  threads: 4
+
+filter_n_reads:
+    threads: 7
+    read_p: 0.1  
+
+#################
+# Coverage
+mapping:
+  threads: 6
+
+#################
+# Binning
+metabat2:
+  threads: 14
+
+concoct:
+  threads: 14
+
+metabinner:
+  length: 2000
+  threads: 14
+
+dasTool:
+  threads: 14
+
+################
+# Bins
+bbmap:
+  threads: 2
+
+dRep:
+  threads: 28
+  comp: 70
+  cont: 10
+
+mdmcleaner:
+  threads: 7
+
+################
+# Quality & Taxonomy
+checkm2:
+  threads: 20
+  db: "/scratch/users/gmichoud/DB/CheckM2_database/uniref100.KO.1.dmnd"  ###USER INPUT REQUIRED###
+  extension: "fa"  ###USER INPUT REQUIRED###
+  git_path: "https://github.com/chklovski/checkm2.git"
+
+gtdbtk:
+  threads: 20
+  path: "/scratch/users/gmichoud/DB/release207_v2"  ###USER INPUT REQUIRED###
+
+
+################
+# Functions
+metabolic:
+  threads: 16
+  db: "/mnt/isilon/projects/ecosystem_biology/databases/gtdbtk/release95"  ###USER INPUT REQUIRED###
+  directory: "/work/projects/nomis/tools/METABOLIC"  ###USER INPUT REQUIRED###
+
+eggnog:
+  threads: 16
+  final_threads: 24
+  itype: "metagenome"
+  genepred: "prodigal"
+  db: "/work/projects/nomis/tools/eggnog"  ###USER INPUT REQUIRED###
+  split:
+    length: 2000000
+    suffix: 3

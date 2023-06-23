@@ -1,0 +1,184 @@
+__default__:
+  time: "0-01:00:00"
+  partition: "batch"
+  qos: "normal"
+  output: slurmlog/{rule}.{wildcards}.out
+  error: slrumlog/{rule}.{wildcards}.out
+  account: "project_ensemble"
+  nodes: 1
+  n: 1
+  cpus-per-task: 1
+  explicit: ""
+  job-name: "binning.{rule}"
+
+
+mapping_index:
+  time: "00-08:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+mapping:
+  time: "00-08:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+metabat2_mapping:
+  time: "00-05:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+metabat2:
+  time: "00-05:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+concoct_prepare:
+  time: "00-08:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+concoct: 
+  time: "01-00:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+metabinner_prepare:
+  time: "00-02:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+metabinner_coverage:
+  time: "00-08:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+metabinner:
+  time: "01-00:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+prepare_dasTool:
+  time: "00-01:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+dasTool_run:
+  time: "01-00:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+checkm2:
+  time: "01-12:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+mdmcleaner_db:
+  time: "00-08:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+mdmcleaner:
+  time: "00-08:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+checkmBeforeDrep:
+  time: "01-12:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+dRep:
+  time: "01-00:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+mapping_all:
+  time: "00-12:00:00"
+  partition: "gpu"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+coverage:
+  time: "00-02:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+  explicit: ""
+
+gtdbtk:
+  time: "00-12:00:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1
+
+metabolic:
+  time: "10-00:00:00"
+  partition: "gpu"
+  qos: "long"
+  nodes: 1
+  n: 1
+
+emapper:
+  time: "06-00:00:00"
+  partition: "gpu"
+  qos: "long"
+  nodes: 1
+  n: 1
+
+emapper_final:
+  time: "01-00:00:00"
+  partition: "batch"
+  qos: "long"
+  nodes: 1
+  n: 1
+
+mgthermometer_run:
+  time: "00-00:30:00"
+  partition: "batch"
+  qos: "normal"
+  nodes: 1
+  n: 1

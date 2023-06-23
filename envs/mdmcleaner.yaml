@@ -1,0 +1,10 @@
+name: mdmcleaner_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - au-eoed
+dependencies:
+  - python=3.8
+  - bbmap=38.96
+  - mdmcleaner=0.8.3

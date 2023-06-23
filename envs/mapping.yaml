@@ -1,0 +1,9 @@
+name: mapping
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - bwa=0.7.17
+  - samtools=1.12
+  - seqkit=2.2.0
