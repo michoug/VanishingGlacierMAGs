@@ -1,0 +1,9 @@
+@software{vanishingGlacierMAGs,
+  author = {Michoud, Grégoire and Bourquin, Massimo and Busi, Susheel Banu},
+  #doi = {10.5281/zenodo.1234},
+  month = {2},
+  title = {{VanishingGlacierMAGs}},
+  url = {https://github.com/michoug/VanishingGlacierMAGs},
+  version = {1.0.0},
+  year = {2024}
+}
