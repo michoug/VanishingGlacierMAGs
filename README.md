@@ -1,11 +1,18 @@
-# SnakemakeBinning (MAG analyses)
+# VanishingGlacierMAGs generation and analysis
+
+This pipeline is used to generate MAGs from different individual assemblies and their respective reads for the [VanishingGlaciers](https://www.glacierstreams.ch/) project. The pipeline is based on the [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system and is designed to be run on a high-performance computing cluster.
 
 ## Pipeline description
 
-- Pipeline starts with different individual MAGs (`fa` files) and their respective reads (`mg.r{1,2}.preprocessed.fq` files). 
-- Next, bins from all samples are dereplicated with [dRep](https://github.com/MrOlm/drep) to form MAGs. 
+- This pipeline starts with different individual assemblies (`fasta` files) and their respective reads (`mg.r{1,2}.preprocessed.fq` files).
+- To reduce computational time, the reads are subsampled to 10% reads per sample and the contigs less than 1.5 kbp are removed.
+- The subsampled reads are then mapped against the assemblies using [BWA](https://github.com/lh3/bwa).
+- The mapped reads are then used to bin the contigs using [MetaBAT2](https://bitbucket.org/berkeleylab/metabat/src/master/), [CONCOCT](https://github.com/BinPro/CONCOCT) and [MetaBinner](https://github.com/ziyewang/MetaBinner).
+- The bins are then optimized using [DAS_Tool](https://github.com/cmks/DAS_Tool).
+- [CheckM2](https://github.com/chklovski/CheckM2) is used to estimate the quality of the bins and only the ones that are 50% complete are kept.
+- [MDMCleaner](https://github.com/KIT-IBG-5/mdmcleaner) reduces contamination from those bins.
+- Next, bins are dereplicated with [dRep](https://github.com/MrOlm/drep) to form MAGs and only bins with >70% completeness and < 10% contamination are kept.
 - Read mapping against all the MAGs is done using [BWA](https://github.com/lh3/bwa). 
-- [CheckM](https://github.com/Ecogenomics/CheckM) is used to estimate the quality of the MAGs.
 - And [GtdbTk](https://github.com/Ecogenomics/GTDBTk) is used for the taxonomy.
 - [MGThermometer](https://doi.org/10.1101/2022.07.14.499854) is used to measure the `optimal growth rate` based on the relative abundance of `FIVYWREL` aminoacids
   - Optimal growth rate is measured as follows,
