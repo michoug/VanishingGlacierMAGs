@@ -1,9 +1,16 @@
-@software{vanishingGlacierMAGs,
-  author = {Michoud, Grégoire and Bourquin, Massimo and Busi, Susheel Banu},
-  #doi = {10.5281/zenodo.1234},
-  month = {2},
-  title = {{VanishingGlacierMAGs}},
-  url = {https://github.com/michoug/VanishingGlacierMAGs},
-  version = {1.0.0},
-  year = {2024}
-}
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Michoud"
+  given-names: "Gregoire"
+  orcid: "https://orcid.org/0000-0003-1071-9900"
+- family-names: "Masimo"
+  given-names: "Bourquin"
+  orcid: "https://orcid.org/0000-0003-4187-7485"
+- family-names: "Susheel Banu"
+  given-names: "Busi"
+  orcid: "https://orcid.org/0000-0001-7559-3400"
+title: "VanishingGlacierMAGs"
+version: 1.0.0
+date-released: 2024-02-11
+url: "https://github.com/michoug/VanishingGlacierMAGs"
