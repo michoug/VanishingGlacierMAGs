@@ -1,5 +1,7 @@
 # VanishingGlacierMAGs generation and analysis
 
+[![DOI](https://zenodo.org/badge/657517189.svg)](https://zenodo.org/doi/10.5281/zenodo.10648954)
+
 This pipeline is used to generate MAGs from different individual assemblies and their respective reads for the [VanishingGlaciers](https://www.glacierstreams.ch/) project. The pipeline is based on the [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system and is designed to be run on a high-performance computing cluster.
 
 ## Pipeline description
